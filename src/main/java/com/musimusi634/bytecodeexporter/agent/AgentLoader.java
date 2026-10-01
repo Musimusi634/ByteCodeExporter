@@ -25,8 +25,9 @@ public class AgentLoader {
             return true;
         } catch (Throwable t) {
             ByteCodeExporter.LOGGER.error("agent load failed!", t);
-            if (vm != null) vm.detach();
             return false;
+        }finally {
+            if (vm != null) vm.detach();
         }
     }
 
